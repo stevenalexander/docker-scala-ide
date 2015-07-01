@@ -1,24 +1,25 @@
-# Docker Scala environment
+# Docker scala-ide
 
-A container with JDK, scala/scalac and SBT. Useful as a base for a Scala
-build/scratch environment.
+A container with JDK, scala/scalac, SBT and scala-ide. Use the X11 socket when
+running the image to display the IDE. Inspired by [Jessie Frazelle's blog](https://blog.jessfraz.com/post/docker-containers-on-the-desktop/).
+
+Useful to quickly create a clean development environment without modifying your
+host OS.
 
 ## Run
 
 Build image:
 
 ```
-docker build -t scala .
+docker build -t stevenalexander/scala-ide .
 ```
 
 Run image:
 
 ```
-docker run -it scala bash
+# First run
+docker run -it --cpuset 0 -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY --name scala-ide stevenalexander/scala-ide
 
-# or direct to scala console
-docker run -it scala scala
-
-# or direct to sbt
-docker run -it -v /myproject:/myproject -w /myproject scala sbt run
+# After
+docker start scala-ide
 ```

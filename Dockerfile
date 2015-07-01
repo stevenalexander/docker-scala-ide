@@ -22,3 +22,12 @@ RUN chmod u+x /bin/sbt
 
 # Get SBT to pull base libraries
 RUN sbt info
+
+# scala-ide
+RUN curl -O -L http://downloads.typesafe.com/scalaide-pack/4.1.0-vfinal-luna-211-20150525/scala-SDK-4.1.0-vfinal-2.11-linux.gtk.x86_64.tar.gz
+RUN tar xzvf scala-SDK-4.1.0-vfinal-2.11-linux.gtk.x86_64.tar.gz
+RUN rm scala-SDK-4.1.0-vfinal-2.11-linux.gtk.x86_64.tar.gz
+
+WORKDIR /eclipse
+
+CMD ./eclipse
