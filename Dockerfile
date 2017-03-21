@@ -30,4 +30,4 @@ RUN rm scala-SDK-4.1.0-vfinal-2.11-linux.gtk.x86_64.tar.gz
 
 WORKDIR /eclipse
 
-CMD ./eclipse
+CMD /eclipse/eclipse
